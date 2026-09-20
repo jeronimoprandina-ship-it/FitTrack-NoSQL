@@ -1,0 +1,96 @@
+[
+  {
+    "nombre": "Lucas Gómez",
+    "edad": 28,
+    "plan": "Musculación",
+    "cuotaAlDia": true,
+    "visitasMes": 12,
+    "actividades": ["Musculación", "Funcional"],
+    "contacto": { "telefono": "261111222", "email": "lucas@gmail.com" }
+  },
+  {
+    "nombre": "Sofía Martínez",
+    "edad": 22,
+    "plan": "Crossfit",
+    "cuotaAlDia": true,
+    "visitasMes": 15,
+    "actividades": ["Crossfit", "Spinning"],
+    "contacto": { "telefono": "261222333", "email": "sofia@gmail.com" }
+  },
+  {
+    "nombre": "Mateo Fernández",
+    "edad": 35,
+    "plan": "Spinning",
+    "cuotaAlDia": false,
+    "visitasMes": 4,
+    "actividades": ["Spinning"],
+    "contacto": { "telefono": "261333444", "email": "mateo@gmail.com" }
+  },
+  {
+    "nombre": "Valentina Rossi",
+    "edad": 19,
+    "plan": "Musculación",
+    "cuotaAlDia": true,
+    "visitasMes": 20,
+    "actividades": ["Musculación", "Spinning"],
+    "contacto": { "telefono": "261444555", "email": "valentina@gmail.com" },
+    "aptoMedicoVencimiento": "2026-12-31"
+  },
+  {
+    "nombre": "Joaquín Silva",
+    "edad": 30,
+    "plan": "Crossfit",
+    "cuotaAlDia": false,
+    "visitasMes": 2,
+    "actividades": ["Crossfit"],
+    "contacto": { "telefono": "261555666", "email": "joaquin@gmail.com" }
+  },
+  {
+    "nombre": "Camila López",
+    "edad": 26,
+    "plan": "Spinning",
+    "cuotaAlDia": true,
+    "visitasMes": 10,
+    "actividades": ["Spinning", "Musculación"],
+    "contacto": { "telefono": "261666777", "email": "camila@gmail.com" },
+    "aptoMedicoVencimiento": "2027-01-15",
+    "casilleroAsignado": 104
+  },
+  {
+    "nombre": "Nicolás Benítez",
+    "edad": 42,
+    "plan": "Musculación",
+    "cuotaAlDia": false,
+    "visitasMes": 0,
+    "actividades": ["Musculación"],
+    "contacto": { "telefono": "261777888", "email": "nicolas@gmail.com" }
+  },
+  {
+    "nombre": "Lola Romero",
+    "edad": 24,
+    "plan": "Crossfit",
+    "cuotaAlDia": true,
+    "visitasMes": 18,
+    "actividades": ["Crossfit", "Musculación", "Spinning"],
+    "contacto": { "telefono": "261888999", "email": "lola@gmail.com" },
+    "casilleroAsignado": 108
+  },
+  {
+    "nombre": "Tomás Acosta",
+    "edad": 31,
+    "plan": "Spinning",
+    "cuotaAlDia": true,
+    "visitasMes": 8,
+    "actividades": ["Spinning"],
+    "contacto": { "telefono": "261999000", "email": "tomas@gmail.com" }
+  },
+  {
+    "nombre": "Martina Díaz",
+    "edad": 27,
+    "plan": "Prueba",
+    "cuotaAlDia": false,
+    "visitasMes": 1,
+    "actividades": ["Musculación"],
+    "contacto": { "telefono": "261000111", "email": "martina@gmail.com" }
+  }
+]
