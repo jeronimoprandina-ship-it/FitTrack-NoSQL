@@ -106,5 +106,89 @@ Almacena el historial contable de comprobantes de pago de las cuotas de los soci
     "mes": 8,
     "anio": 2026
   },
-  "comprobante_numero": "REC-2026-08912"
+  "c# Sistema de Gestión de Gimnasio - FitTrack (Base de Datos NoSQL)
+
+Este repositorio contiene la implementación práctica del modelo de datos NoSQL para el sistema de gestión de gimnasios **FitTrack**, desarrollado sobre **MongoDB Server 7.0**.
+
+---
+
+1. Sembrado de Datos (Seeding)
+Se pobló la colección socios en la base de datos fittrack con 10 documentos. Para evidenciar la flexibilidad del esquema (schema-less), se estructuraron subdocumentos anidados de contacto (contacto.email, contacto.telefono), un arreglo de disciplinas (actividades) y campos opcionales según el caso (aptoMedicoVencimiento, casilleroAsignado).
+
+2. Pruebas de Consultas (MQL)
+A. Consultas de Lectura (Read)
+Filtrado básico por coincidencia exacta
+
+Caso de negocio: Obtener el listado de todos los socios activos que poseen su cuota al día.
+
+db.socios.find({ cuotaAlDia: true });
+Resultado / Evidencia:
+(Insertar captura de pantalla de mongosh)
+
+Operador de comparación ($gt)
+
+Caso de negocio: Identificar socios mayores a 25 años para campañas de personalización de entrenamiento.
+
+db.socios.find({ edad: { $gt: 25 } });
+Resultado / Evidencia:
+(Insertar captura de pantalla de mongosh)
+
+Notación de punto en objetos anidados (Dot Notation)
+
+Caso de negocio: Buscar el perfil de un socio a partir de su dirección de correo electrónico registrada en el subdocumento contacto.
+
+
+db.socios.find({ "contacto.email": "sofia@gmail.com" });
+Resultado / Evidencia:
+(Insertar captura de pantalla de mongosh)
+
+Proyección específica de campos (Exclusión de _id)
+
+Caso de negocio: Generar una lista pública resumida con el nombre, plan y edad del socio, omitiendo datos sensibles y el _id.
+
+db.socios.find({}, { _id: 0, nombre: 1, plan: 1, edad: 1 });
+Resultado / Evidencia:
+(Insertar captura de pantalla de mongosh)
+
+Filtro en arreglos ($all)
+
+Caso de negocio: Filtrar únicamente a los socios que participan simultáneamente en las actividades de Crossfit y Spinning.
+
+db.socios.find({ actividades: { $all: ["Crossfit", "Spinning"] } });
+Resultado / Evidencia:
+(Insertar captura de pantalla de mongosh)
+
+B. Operaciones de Escritura y Modificación (Update & Delete)
+Actualización con $set (Campo simple y nueva propiedad)
+
+Caso de negocio: Registrar el pago de la cuota de Mateo Fernández cambiando cuotaAlDia a true e insertando la fecha de la transacción (fechaUltimoPago).
+
+
+db.socios.updateOne(
+  { nombre: "Mateo Fernández" },
+  { $set: { cuotaAlDia: true, fechaUltimoPago: "2026-09-20" } }
+);
+Resultado / Evidencia:
+(Insertar captura de pantalla de mongosh)
+
+Incremento atómico ($inc)
+
+Caso de negocio: Sumar +1 al contador de asistencias mensuales (visitasMes) del socio Lucas Gómez al ingresar por molinete.
+
+db.socios.updateOne(
+  { nombre: "Lucas Gómez" },
+  { $inc: { visitasMes: 1 } }
+);
+Resultado / Evidencia:
+(Insertar captura de pantalla de mongosh)
+
+Eliminación segura con criterio estricto (deleteOne)
+
+Caso de negocio: Eliminar el registro de prueba no verificado de la socia Martina Díaz.
+
+db.socios.deleteOne({ nombre: "Martina Díaz", plan: "Prueba" });
+
+
+
+db.socios.deleteOne({ nombre: "Martina Díaz", plan: "Prueba" });s CRUDomprobante_numero": "REC-2026-08912"
 }
