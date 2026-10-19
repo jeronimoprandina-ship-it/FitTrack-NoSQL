@@ -201,3 +201,21 @@ db.socios.deleteOne({ nombre: "Martina Díaz", plan: "Prueba" });
 
 db.socios.deleteOne({ nombre: "Martina Díaz", plan: "Prueba" });s CRUDomprobante_numero": "REC-2026-08912"
 }
+Fase 3: Transacciones ACID, Alta Disponibilidad y Seguridad
+
+Esta fase implementa los mecanismos avanzados de robustez, concurrencia transaccional, tolerancia a fallos y control de acceso para el dominio de gestión del gimnasio (`fittrack`).
+
+###  Paso 1: Alta Disponibilidad y Replica Sets (Failover)
+* **Objetivo:** Garantizar la continuidad del servicio ante la caída imprevista del nodo Primario.
+* **Implementación:** Se configuró un clúster de réplicas en MongoDB y se desarrolló el script `scripts/replica_set_failover.js`, el cual realiza inserciones continuas para comprobar el funcionamiento del Árbitro y la promoción automática del nodo Secundario.
+
+### Paso 2: Transacciones ACID Multi-documento
+* **Objetivo:** Asegurar la consistencia estricta en operaciones de negocio críticas que afectan a múltiples colecciones simultáneamente.
+* **Implementación:** Se programó el script `scripts/transaction_fittrack.js` para procesar la renovación de la membresía mensual de un socio (`socios`) y registrar el comprobante de pago correspondiente (`pagos`) de forma atómica (`commitTransaction` / `abortTransaction`).
+
+###  Paso 3: Seguridad y Control de Acceso (RBAC)
+* **Objetivo:** Proteger la infraestructura de datos aplicando el principio de mínimo privilegio.
+* **Implementación:** Mediante el script `scripts/security_config.js`, se establecieron perfiles diferenciados:
+  * **Administrador Global (`admin_fittrack`):** Con control total sobre la instancia.
+  * **Usuario Operativo (`fittrack_appuser`):** Con permisos restringidos de lectura y escritura exclusivamente sobre la base de datos del gimnasio (`fittrack`).
+```
